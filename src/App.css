@@ -1,3 +1,12 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +44,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+form{
+  margin: 100px auto;
+  font-size: 2rem;
+}
+
+form input{
+  display: block;
+  font-size: 1.6rem;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+form button{
+  font-size: 1.6rem;
+  padding: 10px;
+  margin-top: 10px;
 }

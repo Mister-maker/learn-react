@@ -1,24 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Contact } from './pages/Contact';
+import { Profile } from './pages/Profile';
+import { Home } from './pages/Home';
+import { Navbar } from './components/Navbar';
+import { useState, createContext } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Form } from './pages/Form';
+
+export const AppContext = createContext();
+const client = new QueryClient({defaultOptions: {queries: {staleTime: 1000, refetchOnWindowFocus: false}}});
 
 function App() {
+
+  const [name, setName] = useState("John Doe");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={client}>
+      <AppContext.Provider value={{ name, setName }}>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/form' element={<Form />} />
+            <Route path='*' element={<h1>404: Not Found</h1>} />
+          </Routes>
+        </Router>
+      </AppContext.Provider>
+    </QueryClientProvider>
   );
 }
 
