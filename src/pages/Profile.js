@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { AppContext } from '../App';
-import { ChangeProfileName } from '../components/ChangeProfileName';
+import { ChangeProfileName } from '../components';
 
 export const Profile = () => {
   const { name } = useContext(AppContext);

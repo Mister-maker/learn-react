@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Contact } from './pages/Contact';
 import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
-import { Navbar } from './components/Navbar';
 import { useState, createContext } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Form } from './pages/Form';
+import { Navbar } from './components';
 
 export const AppContext = createContext();
 const client = new QueryClient({defaultOptions: {queries: {staleTime: 1000, refetchOnWindowFocus: false}}});
