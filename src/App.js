@@ -19,14 +19,16 @@ function App() {
     <QueryClientProvider client={client}>
       <AppContext.Provider value={{ name, setName }}>
         <Router>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/contact' element={<Contact />} />
-            <Route path='/profile' element={<Profile />} />
-            <Route path='/form' element={<Form />} />
-            <Route path='*' element={<h1>404: Not Found</h1>} />
-          </Routes>
+          <div className='App'>
+            <Navbar />
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/contact' element={<Contact />} />
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/form' element={<Form />} />
+              <Route path='*' element={<h1>404: Not Found</h1>} />
+            </Routes>
+          </div>
         </Router>
       </AppContext.Provider>
     </QueryClientProvider>
