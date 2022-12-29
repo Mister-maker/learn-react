@@ -18,7 +18,7 @@ export const Form = () => {
     });
 
     const onSubmit = (data) => {
-        console.log(data);
+        console.log(data)
     };
 
     return (

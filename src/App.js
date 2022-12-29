@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Contact } from './pages/Contact';
+import { About } from './pages/About';
 import { Profile } from './pages/Profile';
 import { Home } from './pages/Home';
 import { useState, createContext } from 'react';
@@ -23,7 +23,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/contact' element={<Contact />} />
+              <Route path='/about' element={<About />} />
               <Route path='/profile' element={<Profile />} />
               <Route path='/form' element={<Form />} />
               <Route path='*' element={<h1>404: Not Found</h1>} />

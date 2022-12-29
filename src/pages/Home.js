@@ -10,18 +10,18 @@ export const Home = () => {
 
   if (isLoading) return (
     <img
-      src='https://media.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif'
+      src='https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif'
       alt='gif'
     />
   );
 
   return (
     <div>
-      <h1>Home user name is {data?.fact}</h1> 
+      <h1>Cat Fact: {data?.fact}</h1> 
 
       <p>{name}</p>
 
-      <button onClick={refetch}>Update Data Using Refetch</button>
+      <button className="button" onClick={refetch}>Update Data Using Refetch</button>
     </div>
   );
 }

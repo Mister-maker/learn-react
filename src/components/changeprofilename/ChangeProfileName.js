@@ -7,6 +7,7 @@ export const ChangeProfileName = () => {
   return (
     <div>
       <input
+        className='input'
         type='text'
         value={name}
         onChange={(e) => setName(e.target.value)}
