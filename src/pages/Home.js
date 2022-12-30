@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 export const Home = () => {
   const { name } = useContext(AppContext);
-  const { data, isLoading, error, refetch } = useQuery(["user"], () => {
+  const { data, isLoading, refetch } = useQuery(["user"], () => {
       return fetch('https://catfact.ninja/fact').then((res) => res.json());
   });
 

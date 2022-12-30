@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { set } from 'react-hook-form';
 import { urlFor, client } from '../client';
 
 
