@@ -145,6 +145,15 @@ form button{
   margin-top: 10px;
 }
 
+textarea{
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.6rem;
+  margin-top: 10px;
+  width: 100%;
+}
+
 .about-tags{
   display: flex;
   flex-wrap: wrap;

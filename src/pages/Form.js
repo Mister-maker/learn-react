@@ -1,15 +1,21 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+import { urlFor, client } from '../client';
 import * as yup from "yup";
 
 
 export const Form = () => {
 
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+
     const schema = yup.object().shape({
-        name: yup.string().required("Name is required"),
-        email: yup.string().email().required(),
-        password: yup.string().min(6).required(),
-        confirmPassword: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
+      name: yup.string().required('Name is required'),
+      email: yup.string().email().required('email is required'),
+      message: yup.string().required('message is required'),
+      // password: yup.string().min(6).required(),
+      // confirmPassword: yup.string().oneOf([yup.ref('password'), null], 'Passwords must match')
     });
 
 
@@ -19,6 +25,23 @@ export const Form = () => {
 
     const onSubmit = (data) => {
         console.log(data)
+        
+        const { name, email, message } = data;
+
+        const contact = {
+          _type: 'contact',
+          name: name,
+          email: email,
+          message: message,
+        };
+
+        client
+          .create(contact)
+          .then(() => {
+            setLoading(false);
+            setIsFormSubmitted(true);
+          })
+          .catch((err) => console.log(err));
     };
 
     return (
@@ -35,7 +58,8 @@ export const Form = () => {
           {...register('email')}
         />
         <p>{errors.email?.message}</p>
-        <input
+        <textarea {...register('message')} cols='30' rows='10'></textarea>
+        {/* <input
           type='password'
           placeholder='Enter your password'
           {...register('password')}
@@ -45,7 +69,7 @@ export const Form = () => {
           type='password'
           placeholder='Confirm your password'
           {...register('confirmPassword')}
-        />
+        /> */}
         <p>{errors.confirmPassword?.message}</p>
         <button type='submit'>Submit</button>
       </form>
